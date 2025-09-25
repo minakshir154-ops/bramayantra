@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrahmaYantra Webinar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a1a;
+      --primary: #d4af37;
+      --secondary: #2b2b44;
+      --text: #f0f0f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      animation: fadeInDown 1.2s ease;
+    }
+    header h1 {
+      font-family: "Cinzel", serif;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #bbb;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      animation: fadeIn 1.5s ease;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      background: var(--primary);
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(212,175,55,0.4);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section h3 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--secondary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.4s, background 0.4s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      background: #353557;
+    }
+    .card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      border-top: 1px solid #222;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(30px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from {opacity:0; transform:translateY(-30px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BrahmaYantra</h1>
+    <p>Agentic AI for a New Era</p>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome to the Future</h2>
+    <p>
+      Join us as we explore Agentic AI — the revolutionary technology that thinks, plans,
+      and acts independently while honoring the wisdom of Indian tradition.
+    </p>
+    <a href="#register" class="btn">Reserve Your Spot</a>
+  </section>
+
+  <section>
+    <h3>Why Join This Webinar?</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>The Convergence</h4>
+        <p>AI agents collaborating with humans for the first time in history.</p>
+      </div>
+      <div class="card">
+        <h4>India's Renaissance</h4>
+        <p>From Nyaya philosophy to advanced mathematics, India's legacy drives AI innovation.</p>
+      </div>
+      <div class="card">
+        <h4>Global Impact</h4>
+        <p>Agentic frameworks shaping industries worldwide with unprecedented growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <h3>Register Now</h3>
+    <form onsubmit="return registerUser(event)" style="text-align:center;">
+      <input type="email" id="email" placeholder="Enter your email" required
+             style="padding:0.8rem; border-radius:8px; border:none; width:250px; margin-right:0.5rem;">
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 BrahmaYantra Webinar · Tradition Meets Technology
+  </footer>
+
+  <script>
+    // Reveal cards on scroll
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Fake register action
+    function registerUser(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      alert("Thank you for registering! We'll send details to: " + email);
+      document.getElementById('email').value = "";
+      return false;
+    }
+  </script>
+
+</body>
+</html>
